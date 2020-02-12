@@ -3,12 +3,12 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <sensor_msgs/Image.h>
-
+////¼±¾ðºÎ/////
 class Gray
 {
   public:
 
-    int i, j;    
+    int i, j; 
     cv::Mat dst;
     cv::Mat tmp;
     cv::Mat color_stream;
@@ -27,6 +27,5 @@ class Gray
     {
         initSubscriber();   
     }
-
 };
 

@@ -56,6 +56,18 @@ CMAKE_BINARY_DIR = /home/tm/sensor/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -68,29 +80,27 @@ install/local/fast: preinstall/fast
 	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/local/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
+.PHONY : rebuild_cache/fast
 
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -113,27 +123,17 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/local/bin/cmake -P cmake_install.cmake
+.PHONY : install
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/local/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,19 +168,79 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
-	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-.PHONY : usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+usb_cam/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+.PHONY : usb_cam/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-std_srvs_generate_messages_lisp: usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+geometry_msgs_generate_messages_nodejs: usb_cam/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : std_srvs_generate_messages_lisp
+.PHONY : geometry_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-std_srvs_generate_messages_lisp/fast:
-	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
-.PHONY : std_srvs_generate_messages_lisp/fast
+geometry_msgs_generate_messages_nodejs/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make usb_cam/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+.PHONY : geometry_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+usb_cam/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+.PHONY : usb_cam/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_lisp: usb_cam/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_lisp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_lisp/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make usb_cam/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+.PHONY : geometry_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+usb_cam/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+.PHONY : usb_cam/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_eus: usb_cam/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_eus
+
+# fast build rule for target.
+geometry_msgs_generate_messages_eus/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make usb_cam/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+.PHONY : geometry_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+usb_cam/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+.PHONY : usb_cam/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_lisp: usb_cam/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_lisp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_lisp/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make usb_cam/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+.PHONY : sensor_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+usb_cam/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+.PHONY : usb_cam/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_py: usb_cam/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_py
+
+# fast build rule for target.
+geometry_msgs_generate_messages_py/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make usb_cam/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+.PHONY : geometry_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 usb_cam/CMakeFiles/std_srvs_generate_messages_eus.dir/rule:
@@ -198,19 +258,34 @@ std_srvs_generate_messages_eus/fast:
 .PHONY : std_srvs_generate_messages_eus/fast
 
 # Convenience name for target.
-usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule:
-	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-.PHONY : usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+usb_cam/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+.PHONY : usb_cam/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-std_srvs_generate_messages_nodejs: usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+sensor_msgs_generate_messages_py: usb_cam/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
-.PHONY : std_srvs_generate_messages_nodejs
+.PHONY : sensor_msgs_generate_messages_py
 
 # fast build rule for target.
-std_srvs_generate_messages_nodejs/fast:
-	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
-.PHONY : std_srvs_generate_messages_nodejs/fast
+sensor_msgs_generate_messages_py/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make usb_cam/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+.PHONY : sensor_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+usb_cam/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+.PHONY : usb_cam/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_cpp: usb_cam/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_cpp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_cpp/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make usb_cam/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 usb_cam/CMakeFiles/usb_cam_node.dir/rule:
@@ -228,6 +303,36 @@ usb_cam_node/fast:
 .PHONY : usb_cam_node/fast
 
 # Convenience name for target.
+usb_cam/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : usb_cam/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_cpp: usb_cam/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_cpp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_cpp/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make usb_cam/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+usb_cam/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+.PHONY : usb_cam/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_nodejs: usb_cam/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+sensor_msgs_generate_messages_nodejs/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make usb_cam/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+.PHONY : sensor_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
 usb_cam/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
 	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
 .PHONY : usb_cam/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
@@ -243,19 +348,49 @@ std_srvs_generate_messages_cpp/fast:
 .PHONY : std_srvs_generate_messages_cpp/fast
 
 # Convenience name for target.
-usb_cam/CMakeFiles/usb_cam.dir/rule:
-	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/usb_cam.dir/rule
-.PHONY : usb_cam/CMakeFiles/usb_cam.dir/rule
+usb_cam/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+.PHONY : usb_cam/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-usb_cam: usb_cam/CMakeFiles/usb_cam.dir/rule
+sensor_msgs_generate_messages_eus: usb_cam/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
 
-.PHONY : usb_cam
+.PHONY : sensor_msgs_generate_messages_eus
 
 # fast build rule for target.
-usb_cam/fast:
-	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/usb_cam.dir/build.make usb_cam/CMakeFiles/usb_cam.dir/build
-.PHONY : usb_cam/fast
+sensor_msgs_generate_messages_eus/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make usb_cam/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+.PHONY : sensor_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+.PHONY : usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_lisp: usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+
+.PHONY : std_srvs_generate_messages_lisp
+
+# fast build rule for target.
+std_srvs_generate_messages_lisp/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
+.PHONY : std_srvs_generate_messages_lisp/fast
+
+# Convenience name for target.
+usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+.PHONY : usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_nodejs: usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+
+.PHONY : std_srvs_generate_messages_nodejs
+
+# fast build rule for target.
+std_srvs_generate_messages_nodejs/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
+.PHONY : std_srvs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 usb_cam/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
@@ -271,6 +406,21 @@ std_srvs_generate_messages_py: usb_cam/CMakeFiles/std_srvs_generate_messages_py.
 std_srvs_generate_messages_py/fast:
 	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/std_srvs_generate_messages_py.dir/build.make usb_cam/CMakeFiles/std_srvs_generate_messages_py.dir/build
 .PHONY : std_srvs_generate_messages_py/fast
+
+# Convenience name for target.
+usb_cam/CMakeFiles/usb_cam.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/usb_cam.dir/rule
+.PHONY : usb_cam/CMakeFiles/usb_cam.dir/rule
+
+# Convenience name for target.
+usb_cam: usb_cam/CMakeFiles/usb_cam.dir/rule
+
+.PHONY : usb_cam
+
+# fast build rule for target.
+usb_cam/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f usb_cam/CMakeFiles/usb_cam.dir/build.make usb_cam/CMakeFiles/usb_cam.dir/build
+.PHONY : usb_cam/fast
 
 nodes/usb_cam_node.o: nodes/usb_cam_node.cpp.o
 
@@ -332,20 +482,30 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/local"
-	@echo "... install"
-	@echo "... std_srvs_generate_messages_lisp"
-	@echo "... std_srvs_generate_messages_eus"
-	@echo "... std_srvs_generate_messages_nodejs"
-	@echo "... usb_cam_node"
 	@echo "... install/strip"
-	@echo "... list_install_components"
+	@echo "... install/local"
+	@echo "... geometry_msgs_generate_messages_nodejs"
+	@echo "... geometry_msgs_generate_messages_lisp"
+	@echo "... rebuild_cache"
+	@echo "... geometry_msgs_generate_messages_eus"
+	@echo "... sensor_msgs_generate_messages_lisp"
+	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... std_srvs_generate_messages_eus"
+	@echo "... sensor_msgs_generate_messages_py"
+	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... usb_cam_node"
+	@echo "... geometry_msgs_generate_messages_cpp"
+	@echo "... sensor_msgs_generate_messages_nodejs"
+	@echo "... edit_cache"
 	@echo "... std_srvs_generate_messages_cpp"
-	@echo "... usb_cam"
+	@echo "... sensor_msgs_generate_messages_eus"
+	@echo "... list_install_components"
+	@echo "... std_srvs_generate_messages_lisp"
+	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... test"
-	@echo "... edit_cache"
-	@echo "... rebuild_cache"
+	@echo "... usb_cam"
+	@echo "... install"
 	@echo "... nodes/usb_cam_node.o"
 	@echo "... nodes/usb_cam_node.i"
 	@echo "... nodes/usb_cam_node.s"

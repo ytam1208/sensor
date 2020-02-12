@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "A_code"
-  "A_code.pdb"
+  "/home/tm/sensor/devel/lib/A_code/A_code"
+  "/home/tm/sensor/devel/lib/A_code/A_code.pdb"
   "CMakeFiles/A_code.dir/src/gray.cpp.o"
   "CMakeFiles/A_code.dir/src/realtime.cpp.o"
 )
