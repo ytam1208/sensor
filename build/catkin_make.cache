@@ -1,0 +1,2 @@
+A_code:usb_cam
+-DCATKIN_DEVEL_PREFIX=/home/tm/sensor/devel -DCMAKE_INSTALL_PREFIX=/home/tm/sensor/install -G Unix Makefiles

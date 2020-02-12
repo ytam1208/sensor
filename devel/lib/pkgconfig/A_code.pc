@@ -1,0 +1,8 @@
+prefix=/home/tm/sensor/devel
+
+Name: A_code
+Description: Description of A_code
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
