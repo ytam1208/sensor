@@ -82,6 +82,7 @@ clean: usb_cam/clean
 # Directory level rules for directory A_code
 
 # Recursive "all" directory target.
+A_code/all: A_code/CMakeFiles/A_code_node.dir/all
 A_code/all: A_code/CMakeFiles/A_code.dir/all
 
 .PHONY : A_code/all
@@ -103,6 +104,7 @@ A_code/clean: A_code/CMakeFiles/roscpp_generate_messages_eus.dir/clean
 A_code/clean: A_code/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 A_code/clean: A_code/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 A_code/clean: A_code/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+A_code/clean: A_code/CMakeFiles/A_code_node.dir/clean
 A_code/clean: A_code/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
 A_code/clean: A_code/CMakeFiles/A_code.dir/clean
 A_code/clean: A_code/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
@@ -327,7 +329,7 @@ CMakeFiles/doxygen.dir/clean:
 gtest/CMakeFiles/gmock_main.dir/all:
 	$(MAKE) -f gtest/CMakeFiles/gmock_main.dir/build.make gtest/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gmock_main.dir/build.make gtest/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=7,8,9,10 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=8,9,10,11 "Built target gmock_main"
 .PHONY : gtest/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -354,7 +356,7 @@ gtest/CMakeFiles/gmock_main.dir/clean:
 gtest/CMakeFiles/gmock.dir/all:
 	$(MAKE) -f gtest/CMakeFiles/gmock.dir/build.make gtest/CMakeFiles/gmock.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gmock.dir/build.make gtest/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=4,5,6 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=5,6,7 "Built target gmock"
 .PHONY : gtest/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -381,7 +383,7 @@ gtest/CMakeFiles/gmock.dir/clean:
 gtest/gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/gtest/CMakeFiles/gtest.dir/build.make gtest/gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/gtest/CMakeFiles/gtest.dir/build.make gtest/gtest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=11,12 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=12,13 "Built target gtest"
 .PHONY : gtest/gtest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -408,7 +410,7 @@ gtest/gtest/CMakeFiles/gtest.dir/clean:
 gtest/gtest/CMakeFiles/gtest_main.dir/all: gtest/gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/gtest/CMakeFiles/gtest_main.dir/build.make gtest/gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/gtest/CMakeFiles/gtest_main.dir/build.make gtest/gtest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=13,14 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=14,15 "Built target gtest_main"
 .PHONY : gtest/gtest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -726,6 +728,33 @@ A_code/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean:
 .PHONY : A_code/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
 
 #=============================================================================
+# Target rules for target A_code/CMakeFiles/A_code_node.dir
+
+# All Build rule for target.
+A_code/CMakeFiles/A_code_node.dir/all: A_code/CMakeFiles/A_code.dir/all
+	$(MAKE) -f A_code/CMakeFiles/A_code_node.dir/build.make A_code/CMakeFiles/A_code_node.dir/depend
+	$(MAKE) -f A_code/CMakeFiles/A_code_node.dir/build.make A_code/CMakeFiles/A_code_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=3,4 "Built target A_code_node"
+.PHONY : A_code/CMakeFiles/A_code_node.dir/all
+
+# Build rule for subdir invocation for target.
+A_code/CMakeFiles/A_code_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tm/sensor/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 A_code/CMakeFiles/A_code_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tm/sensor/build/CMakeFiles 0
+.PHONY : A_code/CMakeFiles/A_code_node.dir/rule
+
+# Convenience name for target.
+A_code_node: A_code/CMakeFiles/A_code_node.dir/rule
+
+.PHONY : A_code_node
+
+# clean rule for target.
+A_code/CMakeFiles/A_code_node.dir/clean:
+	$(MAKE) -f A_code/CMakeFiles/A_code_node.dir/build.make A_code/CMakeFiles/A_code_node.dir/clean
+.PHONY : A_code/CMakeFiles/A_code_node.dir/clean
+
+#=============================================================================
 # Target rules for target A_code/CMakeFiles/std_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
@@ -773,12 +802,12 @@ A_code/CMakeFiles/A_code.dir/all: A_code/CMakeFiles/std_msgs_generate_messages_e
 A_code/CMakeFiles/A_code.dir/all: A_code/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 	$(MAKE) -f A_code/CMakeFiles/A_code.dir/build.make A_code/CMakeFiles/A_code.dir/depend
 	$(MAKE) -f A_code/CMakeFiles/A_code.dir/build.make A_code/CMakeFiles/A_code.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=1,2,3 "Built target A_code"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=1,2 "Built target A_code"
 .PHONY : A_code/CMakeFiles/A_code.dir/all
 
 # Build rule for subdir invocation for target.
 A_code/CMakeFiles/A_code.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tm/sensor/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tm/sensor/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 A_code/CMakeFiles/A_code.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tm/sensor/build/CMakeFiles 0
 .PHONY : A_code/CMakeFiles/A_code.dir/rule
@@ -1097,7 +1126,7 @@ usb_cam/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean:
 usb_cam/CMakeFiles/usb_cam_node.dir/all: usb_cam/CMakeFiles/usb_cam.dir/all
 	$(MAKE) -f usb_cam/CMakeFiles/usb_cam_node.dir/build.make usb_cam/CMakeFiles/usb_cam_node.dir/depend
 	$(MAKE) -f usb_cam/CMakeFiles/usb_cam_node.dir/build.make usb_cam/CMakeFiles/usb_cam_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=17,18 "Built target usb_cam_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=18,19 "Built target usb_cam_node"
 .PHONY : usb_cam/CMakeFiles/usb_cam_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1313,7 +1342,7 @@ usb_cam/CMakeFiles/std_srvs_generate_messages_py.dir/clean:
 usb_cam/CMakeFiles/usb_cam.dir/all:
 	$(MAKE) -f usb_cam/CMakeFiles/usb_cam.dir/build.make usb_cam/CMakeFiles/usb_cam.dir/depend
 	$(MAKE) -f usb_cam/CMakeFiles/usb_cam.dir/build.make usb_cam/CMakeFiles/usb_cam.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=15,16 "Built target usb_cam"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tm/sensor/build/CMakeFiles --progress-num=16,17 "Built target usb_cam"
 .PHONY : usb_cam/CMakeFiles/usb_cam.dir/all
 
 # Build rule for subdir invocation for target.

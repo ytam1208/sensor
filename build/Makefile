@@ -428,6 +428,19 @@ roscpp_generate_messages_nodejs/fast:
 .PHONY : roscpp_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named A_code_node
+
+# Build rule for target.
+A_code_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 A_code_node
+.PHONY : A_code_node
+
+# fast build rule for target.
+A_code_node/fast:
+	$(MAKE) -f A_code/CMakeFiles/A_code_node.dir/build.make A_code/CMakeFiles/A_code_node.dir/build
+.PHONY : A_code_node/fast
+
+#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -746,6 +759,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_nodejs"
+	@echo "... A_code_node"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... A_code"
 	@echo "... roscpp_generate_messages_lisp"

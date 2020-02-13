@@ -68,6 +68,18 @@ install/strip/fast: preinstall/fast
 	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -122,18 +134,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/local/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -333,6 +333,21 @@ roscpp_generate_messages_nodejs/fast:
 .PHONY : roscpp_generate_messages_nodejs/fast
 
 # Convenience name for target.
+A_code/CMakeFiles/A_code_node.dir/rule:
+	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 A_code/CMakeFiles/A_code_node.dir/rule
+.PHONY : A_code/CMakeFiles/A_code_node.dir/rule
+
+# Convenience name for target.
+A_code_node: A_code/CMakeFiles/A_code_node.dir/rule
+
+.PHONY : A_code_node
+
+# fast build rule for target.
+A_code_node/fast:
+	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code_node.dir/build.make A_code/CMakeFiles/A_code_node.dir/build
+.PHONY : A_code_node/fast
+
+# Convenience name for target.
 A_code/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/tm/sensor/build && $(MAKE) -f CMakeFiles/Makefile2 A_code/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 .PHONY : A_code/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
@@ -407,32 +422,32 @@ std_msgs_generate_messages_lisp/fast:
 	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make A_code/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
 .PHONY : std_msgs_generate_messages_lisp/fast
 
-src/gray.o: src/gray.cpp.o
+nodes/gray.o: nodes/gray.cpp.o
 
-.PHONY : src/gray.o
+.PHONY : nodes/gray.o
 
 # target to build an object file
-src/gray.cpp.o:
-	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code.dir/build.make A_code/CMakeFiles/A_code.dir/src/gray.cpp.o
-.PHONY : src/gray.cpp.o
+nodes/gray.cpp.o:
+	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code.dir/build.make A_code/CMakeFiles/A_code.dir/nodes/gray.cpp.o
+.PHONY : nodes/gray.cpp.o
 
-src/gray.i: src/gray.cpp.i
+nodes/gray.i: nodes/gray.cpp.i
 
-.PHONY : src/gray.i
+.PHONY : nodes/gray.i
 
 # target to preprocess a source file
-src/gray.cpp.i:
-	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code.dir/build.make A_code/CMakeFiles/A_code.dir/src/gray.cpp.i
-.PHONY : src/gray.cpp.i
+nodes/gray.cpp.i:
+	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code.dir/build.make A_code/CMakeFiles/A_code.dir/nodes/gray.cpp.i
+.PHONY : nodes/gray.cpp.i
 
-src/gray.s: src/gray.cpp.s
+nodes/gray.s: nodes/gray.cpp.s
 
-.PHONY : src/gray.s
+.PHONY : nodes/gray.s
 
 # target to generate assembly for a file
-src/gray.cpp.s:
-	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code.dir/build.make A_code/CMakeFiles/A_code.dir/src/gray.cpp.s
-.PHONY : src/gray.cpp.s
+nodes/gray.cpp.s:
+	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code.dir/build.make A_code/CMakeFiles/A_code.dir/nodes/gray.cpp.s
+.PHONY : nodes/gray.cpp.s
 
 src/realtime.o: src/realtime.cpp.o
 
@@ -440,7 +455,7 @@ src/realtime.o: src/realtime.cpp.o
 
 # target to build an object file
 src/realtime.cpp.o:
-	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code.dir/build.make A_code/CMakeFiles/A_code.dir/src/realtime.cpp.o
+	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code_node.dir/build.make A_code/CMakeFiles/A_code_node.dir/src/realtime.cpp.o
 .PHONY : src/realtime.cpp.o
 
 src/realtime.i: src/realtime.cpp.i
@@ -449,7 +464,7 @@ src/realtime.i: src/realtime.cpp.i
 
 # target to preprocess a source file
 src/realtime.cpp.i:
-	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code.dir/build.make A_code/CMakeFiles/A_code.dir/src/realtime.cpp.i
+	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code_node.dir/build.make A_code/CMakeFiles/A_code_node.dir/src/realtime.cpp.i
 .PHONY : src/realtime.cpp.i
 
 src/realtime.s: src/realtime.cpp.s
@@ -458,7 +473,7 @@ src/realtime.s: src/realtime.cpp.s
 
 # target to generate assembly for a file
 src/realtime.cpp.s:
-	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code.dir/build.make A_code/CMakeFiles/A_code.dir/src/realtime.cpp.s
+	cd /home/tm/sensor/build && $(MAKE) -f A_code/CMakeFiles/A_code_node.dir/build.make A_code/CMakeFiles/A_code_node.dir/src/realtime.cpp.s
 .PHONY : src/realtime.cpp.s
 
 # Help Target
@@ -468,6 +483,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
+	@echo "... install/local"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_eus"
@@ -482,6 +498,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... test"
+	@echo "... A_code_node"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... A_code"
 	@echo "... roscpp_generate_messages_lisp"
@@ -489,10 +506,9 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... list_install_components"
 	@echo "... install"
-	@echo "... install/local"
-	@echo "... src/gray.o"
-	@echo "... src/gray.i"
-	@echo "... src/gray.s"
+	@echo "... nodes/gray.o"
+	@echo "... nodes/gray.i"
+	@echo "... nodes/gray.s"
 	@echo "... src/realtime.o"
 	@echo "... src/realtime.i"
 	@echo "... src/realtime.s"

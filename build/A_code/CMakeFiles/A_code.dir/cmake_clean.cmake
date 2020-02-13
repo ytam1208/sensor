@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/tm/sensor/devel/lib/A_code/A_code"
-  "/home/tm/sensor/devel/lib/A_code/A_code.pdb"
-  "CMakeFiles/A_code.dir/src/gray.cpp.o"
-  "CMakeFiles/A_code.dir/src/realtime.cpp.o"
+  "/home/tm/sensor/devel/lib/libA_code.pdb"
+  "/home/tm/sensor/devel/lib/libA_code.so"
+  "CMakeFiles/A_code.dir/nodes/gray.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.
