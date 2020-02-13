@@ -10,9 +10,10 @@ int main(int argc, char **argv) //노드 메인 함수
      
     while(ros::ok())
     {
-        gray.gray_img = gray.change(gray.tmp);
+        gray.gray_img = gray.change(gray.dst);
 
         cv::imshow("gray_image", gray.gray_img);
+        cv::waitKey(1);
 
         ros::spinOnce();
     }

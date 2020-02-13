@@ -18,7 +18,7 @@ opencv2/highgui/highgui.hpp
 sensor_msgs/Image.h
 -
 
-/home/tm/sensor/src/A_code/src/gray.cpp
+/home/tm/sensor/src/A_code/src/realtime.cpp
 gray.hpp
 /home/tm/sensor/src/A_code/src/gray.hpp
 
