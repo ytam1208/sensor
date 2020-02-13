@@ -11,6 +11,7 @@ class Gray
     int i, j; 
     cv::Mat dst;
     cv::Mat tmp;
+    cv::Mat tmp_output;
     cv::Mat color_stream;
     cv::Mat gray_img; 
 
@@ -19,13 +20,16 @@ class Gray
 
     cv::Mat change(cv::Mat &_src);
 
-    void msgCallback(const sensor_msgs::Image::ConstPtr &image_msg);
+    void msgCallback(const sensor_msgs::Image::ConstPtr& image_msg);
     void initSubscriber();
+    void initValue();
 
     Gray(ros::NodeHandle &_nh):
     nh_(_nh)
     {
+        initValue();
         initSubscriber();   
     }
+
 };
 

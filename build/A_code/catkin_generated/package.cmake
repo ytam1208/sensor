@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "A_code")
 set(A_code_VERSION "0.0.0")
-set(A_code_MAINTAINER "tm <tm@todo.todo>")
+set(A_code_MAINTAINER "tm <tm@cogaplex.com>")
 set(A_code_PACKAGE_FORMAT "2")
 set(A_code_BUILD_DEPENDS "roscpp" "std_msgs")
 set(A_code_BUILD_EXPORT_DEPENDS "roscpp" "std_msgs")
