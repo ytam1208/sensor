@@ -445,6 +445,28 @@ void UsbCam::mjpeg2rgb(char *MJPEG, int len, char *RGB, int NumPixels)
     return;
   }
 
+  {
+    AVPixelFormat pixFormat;
+    switch (avcodec_context_->pix_fmt) {
+    case AV_PIX_FMT_YUVJ420P :
+        pixFormat = AV_PIX_FMT_YUV420P;
+        break;
+    case AV_PIX_FMT_YUVJ422P  :
+        pixFormat = AV_PIX_FMT_YUV422P;
+        break;
+    case AV_PIX_FMT_YUVJ444P   :
+        pixFormat = AV_PIX_FMT_YUV444P;
+        break;
+    case AV_PIX_FMT_YUVJ440P :
+        pixFormat = AV_PIX_FMT_YUV440P;
+        break;
+    default:
+        pixFormat = avcodec_context_->pix_fmt;
+        break;
+    }
+    avcodec_context_->pix_fmt = pixFormat;
+  }//added by Wu Hangyu
+  
   video_sws_ = sws_getContext(xsize, ysize, avcodec_context_->pix_fmt, xsize, ysize, AV_PIX_FMT_RGB24, SWS_BILINEAR, NULL,
 			      NULL,  NULL);
   sws_scale(video_sws_, avframe_camera_->data, avframe_camera_->linesize, 0, ysize, avframe_rgb_->data,

@@ -25,7 +25,7 @@ void Gray::msgCallback(const sensor_msgs::Image::ConstPtr& image_msg)
         index[i] = image_msg->data[i];
     }
 
-    tmp = cv::Mat(480, 640, CV_8UC3, index);       //index의 값을 스칼라로 저장   
+    tmp = cv::Mat(480,640, CV_8UC3, index);       //index의 값을 스칼라로 저장   
 
     color_stream = Gray::tmp.clone();    
     cv::flip(Gray::color_stream, Gray::dst, 1);

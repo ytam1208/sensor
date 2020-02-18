@@ -5,9 +5,14 @@ add_compile_options(-std=c++11)
 
 find_package(catkin REQUIRED  COMPONENTS
     roscpp
-    std_msgs   
+    rospy
+    std_msgs
     OpenCV
+    image_transport
+    std_srvs
+    camera_info_manager   
 )
+#find_package(OpenCV REQUIRED)
 
 ###################################################
 ## Declare things to be passed to other projects ##
