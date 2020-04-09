@@ -20,6 +20,6 @@ int main(int argc, char **argv) //노드 메인 함수
         ros::spinOnce();
     }
     
-    //ros::spin();
+    ros::spin();
     return 0;
 }
