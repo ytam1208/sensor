@@ -7,12 +7,11 @@ find_package(catkin REQUIRED  COMPONENTS
     roscpp
     rospy
     std_msgs
-    OpenCV
     image_transport
     std_srvs
     camera_info_manager   
 )
-#find_package(OpenCV REQUIRED)
+find_package(OpenCV REQUIRED)
 
 ###################################################
 ## Declare things to be passed to other projects ##
@@ -37,25 +36,15 @@ include_directories(
     ${OpenCV_INCLUDE_DIRS}
 )
 
-add_library(${PROJECT_NAME} nodes/gray.cpp)
-target_link_libraries(${PROJECT_NAME}
+add_executable(${PROJECT_NAME}_node nodes/gray.cpp src/realtime.cpp)
+
+add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(${PROJECT_NAME}_node
   ${catkin_LIBRARIES}
   ${OpenCV_LIBRARIES}
 )
 
-add_executable(${PROJECT_NAME}_node src/realtime.cpp)
-target_link_libraries(${PROJECT_NAME}_node
- ${PROJECT_NAME}
- ${catkin_LIBRARIES}
- ${OpenCV_LIBRARIES}
-)
-
-add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-target_link_libraries(${PROJECT_NAME}
-${catkin_LIBRARIES}
-${OpenCV_LIBRARIES}
-)
 
 
 
